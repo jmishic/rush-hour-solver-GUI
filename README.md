@@ -6,10 +6,15 @@ The Solver is based on a BFS algorithm where the program follows each path until
 
 ## text files
 The text files are entered in a specific format.
-- Each file begins with the size of the puzzle (ex 5X5 or 7X8)
+- Each file begins with the size of the puzzle (ex 5 5 for a 5 by 5 square or 7 8 for a 7 by 8 rectangle)
 - Next the number of total cars is listed
-- Finally all the cars are listed with each represented by a letter (ex A 0 1 0 2 0 3)
-- The main 2X1 car the is to exit is always represented by 'X'
+- Finally all the cars are listed with each represented by a letter 
+- Each car has the starting coordinates and ending coordinates (ex A 0 1 0 3)
+- The main 2 by 1 car we are solving for is always represented by 'X' and is last in the file
+
+
+### text file example
+![text file example](text-file-example.png)
 
 ## run configurations
 Run configurations for running different text files representing different rush hour puzzles
