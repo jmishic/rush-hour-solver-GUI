@@ -1,5 +1,7 @@
 # rush-hour-solver-GUI
 Solver for different scenarios of the puzzle game rush hour in Java with basic GUI in JavaFX
+- Main code for rush hour game is under puzzles/jam
+- Text files for rushh hour is under data/jam
 
 ## solver algorithm
 The Solver is based on a BFS algorithm where the program follows each path until the destination(solution) is reached. The rush hour solver in particular is a variation of this algorithm with backtracking tied in. The rush hour solver uses this backtracking to solve the rush hour puzzle more efficiently.
