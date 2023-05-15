@@ -63,14 +63,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     private boolean moveCar;
     private int storedRow;
     private int storedCol;
-    private BorderPane bp;
-    private HBox hboxTop;
-    private FlowPane fp;
-    private Text movesText;
-    private Scene scene;
-    private Button loadGame;
-    private Button resetGame;
-    private Button hint;
 
 
     /**
@@ -102,11 +94,11 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     @Override
     public void start(Stage stage) throws Exception {
         // create hbox for top row
-        hboxTop = new HBox();
+        HBox hboxTop = new HBox();
         // create buttons for bottom row
 
         // load game button
-        loadGame = new Button("Load");
+        Button loadGame = new Button("Load");
         // what happens when button is clicked
         loadGame.setOnAction(event -> {
             //create a new FileChooser
@@ -125,7 +117,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         });
 
         // reset game button
-        resetGame = new Button("Reset");
+        Button resetGame = new Button("Reset");
         // what happens when button is clicked
         resetGame.setOnAction(event -> {
             model.resetBoard();
@@ -133,7 +125,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         });
 
         // hint button
-        hint = new Button("Hint");
+        Button hint = new Button("Hint");
         // what happens when hint button is clicked
         hint.setOnAction(event -> {
             model.getHint();
@@ -164,11 +156,11 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         }
 
         // create all the panes
-        fp = new FlowPane();
-        bp = new BorderPane();
+        FlowPane fp = new FlowPane();
+        BorderPane bp = new BorderPane();
 
         // add text to the hbox
-        movesText = new Text("Moves ");
+        Text movesText = new Text("Moves ");
         moves.setText(model.getMoves() + " ");
         message.setText(" Message: ");
         hboxTop.getChildren().add(movesText);
@@ -200,7 +192,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         bp.setCenter(gridPane);
         bp.setBottom(fp);
 
-        scene = new Scene(bp);
+        Scene scene = new Scene(bp);
         stage.setScene(scene);
         stage.show();
     }
@@ -222,7 +214,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
 
             for (int i = 0; i < model.getCol(); i++) {
                 for (int j = 0; j < model.getRow(); j++) {
-
                     String buttonColor = switch (model.getCurrentConfig().getBoard()[i][j]) {
                         case 'A' -> YELLOW;
                         case 'B' -> ORANGE;
@@ -253,9 +244,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
                         default -> WHITE;
                     };
                     System.out.println(buttonColor);
-
                     Button btn = new Button(Character.toString(model.getCurrentConfig().getBoard()[i][j]));
-
                     btn.setStyle("-fx-font-size: " + BUTTON_FONT_SIZE + ";");
                     btn.setStyle("-fx-background-color: " + buttonColor + ";");
                     btn.setStyle("-fx-font-weight: bold;");
@@ -271,7 +260,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
                     btn.setStyle("-fx-border-color: black;");
                     gridPane.add(btn, j, i);
                 }}
-            bp.setCenter(gridPane);
         }
         if (model.gameOver()) { //checks if game is over.
             message.setText(" Message: You win!");
